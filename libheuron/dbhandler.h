@@ -1,3 +1,12 @@
+/*
+  -------------------------------------------------------------------------
+  Name: dbhandler.cpp
+  Author: vurmux@gmail.com
+  -------------------------------------------------------------------------
+  This module consists routines to work with heuristic signatures database.
+  -------------------------------------------------------------------------
+*/
+
 namespace heuron {
     
     class HeuristicSignature {
@@ -16,5 +25,17 @@ namespace heuron {
 	int set_signature(string signature);
 	int add_threat(string type, int threat);
 	int change_threat(string type, int new_threat);
+    };
+
+    class DatabaseHandler {
+	/*
+	  Heuristic database handler
+	 */
+    private:
+	HeuristicSignature *database;
+    public:
+	int load_database();
+	int get_database();
+	int read_signature();
     };
 }
