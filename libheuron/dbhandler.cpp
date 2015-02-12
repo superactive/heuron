@@ -15,20 +15,27 @@ namespace heuron {
 					   map<string, int> classified_threats) {
 	this->classified_threats = classified_threats;
     }
+
+    int HeuristicSignature::get_id() {
+	return this->id;
+    }
+
+    void HeuristicSignature::set_id() {
+	this->id = id;
     
-    HeuristicSignature::get_signature() {
+    string HeuristicSignature::get_signature() {
 	return this->signature;
     }
     
-    HeuristicSignature::set_signature(string signature) {
+    void HeuristicSignature::set_signature(string signature) {
 	this->signature = signature;
     }
     
-    HeuristicSignature::add_threat(string type, int threat) {
+    void HeuristicSignature::add_threat(string type, int threat) {
 	/* Will be implemented later */
     }
     
-    HeuristicSignature::change_threat(string type, int new_threat) {
+    void HeuristicSignature::change_threat(string type, int new_threat) {
 	/* Will be implemented later */
     }
         

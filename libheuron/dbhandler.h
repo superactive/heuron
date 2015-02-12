@@ -26,6 +26,7 @@ namespace heuron {
 	void set_id(int id);
 	string get_signature();
 	void set_signature(string signature);
+	// Will be implemented later
 	void add_threat(string type, int threat);
 	void change_threat(string type, int new_threat);
     };
