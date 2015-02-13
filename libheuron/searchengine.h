@@ -15,19 +15,20 @@ namespace heuron {
 	 */
     private:
     public:
-		SearchEngine() = 0;
-		int search_in_file();
-		int search_in_memo();
-		int search_in_string();
+	SearchEngine();
+	virtual int search_in_file(FILE *target_file) = 0;
+	//virtual int search_in_memo() = 0;
+	virtual int search_in_string(string target_string) = 0;
     };
 
-	class SimpleSearchEngine {
-	/*
-	  Search engine which implements primitive substring search
-	 */
-	private:
-	public:
-
-	};
+    class SimpleSearchEngine {
+    /*
+      Search engine which implements primitive substring search
+     */
+    private:
+    public:
+	int search_in_file(FILE *target_file);
+	int search_in_string(string target_string);
+    };
 
 }
