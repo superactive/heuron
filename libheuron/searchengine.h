@@ -14,6 +14,7 @@ namespace heuron {
 	  Abstract class for generic search engines
 	 */
     private:
+	DatabaseHandler db_handler;
     public:
 	SearchEngine();
 	virtual int search_in_file(FILE *target_file) = 0;
