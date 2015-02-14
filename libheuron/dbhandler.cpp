@@ -39,4 +39,11 @@ namespace heuron {
 	/* Will be implemented later */
     }
         
+    
+    void DatabaseHandler::load_database() {
+    }
+    
+    HeuristicSignature DatabaseHandler::read_signature(int id) {
+    }
+
 }	
