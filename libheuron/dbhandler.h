@@ -36,7 +36,7 @@ namespace heuron {
 	  Heuristic database handler
 	 */
     private:
-	HeuristicSignature *database;
+	std::map<int, HeuristicSignature> database;
     public:
 	void load_database();
 	HeuristicSignature read_signature(int id);

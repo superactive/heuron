@@ -44,6 +44,7 @@ namespace heuron {
     }
     
     HeuristicSignature DatabaseHandler::read_signature(int id) {
+	return this->database[id];
     }
 
 }	
