@@ -40,5 +40,6 @@ namespace heuron {
     public:
 	void load_database();
 	HeuristicSignature read_signature(int id);
+	HeuristicSignature parse_signature(string signature);
     };
 }
