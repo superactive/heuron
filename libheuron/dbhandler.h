@@ -38,7 +38,7 @@ namespace heuron {
     private:
 	std::map<int, HeuristicSignature> database;
     public:
-	void load_database();
+	void load_database(ifstream is);
 	HeuristicSignature read_signature(int id);
 	HeuristicSignature parse_signature(string signature);
     };

@@ -8,6 +8,7 @@
 */
 
 #include <string>
+#include <fstream>
 #include"dbhandler.h"
     
 namespace heuron {
@@ -41,7 +42,16 @@ namespace heuron {
     }
         
     
-    void DatabaseHandler::load_database() {
+    void DatabaseHandler::load_database(ifstream is) {
+	std::map<int, HeuristicSignature> temp_database();
+	int id = 0;
+	if (is.is_open()) {
+	    while (is.good()) {
+		getline(is, signature_string);
+		HeuristicSignature signature = parse_signature(signature_string);
+		this->database.insert(std::pair<int, HeuristicSignature>(i, signature));
+	    }
+	}
     }
     
     HeuristicSignature DatabaseHandler::read_signature(int id) {
