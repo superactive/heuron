@@ -17,7 +17,7 @@ namespace heuron {
 	DatabaseHandler db_handler;
     public:
 	SearchEngine();
-	virtual int search_in_file(FILE *target_file) = 0;
+	virtual int search_in_file(std::ifstream is) = 0;
 	//virtual int search_in_memo() = 0;
 	virtual int search_in_string(string target_string) = 0;
     };
@@ -28,7 +28,7 @@ namespace heuron {
      */
     private:
     public:
-	int search_in_file(FILE *target_file);
+	int search_in_file(std::ifstream is);
 	int search_in_string(string target_string);
     };
 

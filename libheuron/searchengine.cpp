@@ -8,9 +8,17 @@
 */
 
 namespace heuron {
-    int SimpleSearchEngine::search_in_file(FILE *target_file) {
+
+    MAX_LEN = 65536;
+    
+    int SimpleSearchEngine::search_in_file(std::ifstream is) {
+	file_string = std::string("");
+	is.readsome(file_string, MAX_LEN);
+	return search_in_string(file_string);
     }
 
     int SimpleSearchEngine::search_in_string(string target_string) {
+
     }
+    
 }
