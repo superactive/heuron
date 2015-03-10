@@ -21,11 +21,12 @@ namespace heuron {
     private:
 	WILDCARD_TYPE type;
 	string wildcard;
-	int[] charater_gaps;
+	vector<int> charater_gaps;
 	Wildcard _parse(string wildcard_string);
 	// Will be implemented later
 	int mismatch;
     public:
 	Wildcard(string wildcard_string);
+	Wildcard(WILDCARD_TYPE type, string wildcard, vector<int> charater_gaps);
     };
 }
