@@ -28,8 +28,8 @@ namespace heuron {
      */
     private:
     public:
-	int search_in_file(std::ifstream is, Wildcard wildcard);
-	int search_in_string(string target_string, Wildcard wildcard);
+	int search_in_file(std::ifstream is);
+	int search_in_string(string target_string);
     };
 
 }
