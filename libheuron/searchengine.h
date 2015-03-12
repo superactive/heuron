@@ -30,6 +30,7 @@ namespace heuron {
     public:
 	int search_in_file(std::ifstream is);
 	int search_in_string(string target_string);
+	int match_wildcard(string target_string, Wildcard wildcard);
     };
 
 }
