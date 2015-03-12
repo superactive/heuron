@@ -7,17 +7,25 @@
   -------------------------------------------------------------------------
 */
 
+#include <string>
+#include <fstream>
+#include <map>
+#include "searchengine.h"
+#include "dbhandler.h"
+
+using namespace std;
+
 namespace heuron {
 
-    MAX_LEN = 65536;
+    int MAX_LEN = 65536;
     
     int SimpleSearchEngine::search_in_file(std::ifstream is) {
-	file_string = std::string("");
+	string file_string = std::string("");
 	is.readsome(file_string, MAX_LEN);
 	return search_in_string(file_string);
     }
 
-    int SimpleSearchEngine::search_in_string(string target_string) {
+    int SimpleSearchEngine::search_in_string(std::string target_string) {
 	for (map::iterator iter = this->db_handler.begin(); i != this->db_handler.end(); ++i) {
 	    if (match_wildcard(target_string, *iter) == 1) {
 		return 1;

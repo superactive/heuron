@@ -7,6 +7,8 @@
   -------------------------------------------------------------------------
 */
 
+using namespace std;
+
 namespace heuron {
 
     Wildcard::Wildcard(string wildcard_string) {

@@ -9,12 +9,11 @@
 */
 
 #include "dbhandler.h"
+#include "analyzer.h"
 
+using namespace std;
 
 namespace heuron {
-    
-    int SUSPICIOUS_WEIGHT = 50;
-    int INFECTED_WEIGHT = 100;
     
     // MAYBE NOT int, BUT string <ERROR>, <CLEAN> ...
     int weight_based_check(HeuristicSignature *sigarray) {
@@ -30,8 +29,8 @@ namespace heuron {
 	  -1 - suspicious
 	  >0 - infected; return type of infection
 	*/
-	total_weight = 0;
-	for(int i=0; i<len(sigarray); ++i) {
+	int total_weight = 0;
+	for(int i = 0; i < sigarray.size(); ++i) {
 	    total_weight += sigarray[i].get_weigth(); // TODO: change !!!
 	}
 	if (total_weight >= INFECTED_WEIGHT) {

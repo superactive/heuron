@@ -9,7 +9,11 @@
 
 #include <string>
 #include <fstream>
+#include <vector>
 #include"dbhandler.h"
+#include"routines.h"
+
+using namespace std;
     
 namespace heuron {
 
@@ -22,8 +26,9 @@ namespace heuron {
 	return this->id;
     }
 
-    void HeuristicSignature::set_id() {
+    void HeuristicSignature::set_id(int id) {
 	this->id = id;
+    }
     
     string HeuristicSignature::get_signature() {
 	return this->signature;
@@ -47,9 +52,10 @@ namespace heuron {
 	int id = 0;
 	if (is.is_open()) {
 	    while (is.good()) {
+		string signature_string("");
 		getline(is, signature_string);
 		HeuristicSignature signature = parse_signature(signature_string);
-		this->database.insert(std::pair<int, HeuristicSignature>(i, signature));
+		this->database.insert(std::pair<int, HeuristicSignature>(id, signature));
 	    }
 	}
     }
@@ -71,7 +77,7 @@ namespace heuron {
 	}
 	iter++; // Skip ' '
 	iter++; // Skip '{'
-	end_iter = signature.end() - 2; // Pre-last charater of string
+	string::iterator end_iter = signature.end() - 2; // Pre-last charater of string
 	string parameters_string = string::copy(signature,
 						iter - signature.begin(),
 						end_iter - iter);
@@ -84,9 +90,9 @@ namespace heuron {
 		wildcard = parsed_parameters[1];
 	    }
 	    if (parsed_parameters[0] == "type") {
-		types = split(parsed_parameters[i], ',');
+		vector<string> types = split(parsed_parameters[i], ',');
 		for (int j = 0; j < types.size(); ++j) {
-		    parsed_type = split(types[j], ':');
+		    vector<string> parsed_type = split(types[j], ':');
 		    classified_threats.insert(pair<string, int>(parsed_type[0],
 								stoi(parsed_type[1], nullptr, 10));
 		}
