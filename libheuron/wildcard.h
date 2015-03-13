@@ -7,6 +7,11 @@
   -------------------------------------------------------------------------
 */
 
+#include <string>
+#include <vector>
+
+using namespace std;
+
 namespace heuron {
 
     enum WILDCARD_TYPE {

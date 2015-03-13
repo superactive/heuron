@@ -7,7 +7,10 @@
   -------------------------------------------------------------------------
 */
 
-#import "wildcard.h"
+#include <string>
+#include <vector>
+#include "wildcard.h"
+#include "routines.h"
 
 using namespace std;
 
@@ -21,19 +24,19 @@ namespace heuron {
 	string::iterator iter = wildcard_string.begin();
 	switch (*iter) {
 	case '[':
-	    type = WILDCARD_TYPE.BINARY;
+	    type = BINARY;
 	    break;
 	case '<':
-	    type = WILDCARD_TYPE.STRING;
+	    type = STRING;
 	    break;
-	case default:
+	default:
 	    // Should throw an exception
 	    break;
 	}
 	string signature = wildcard_string.substr(1, wildcard_string.end() - wildcard_string.begin() - 1);
-	bytes = signature.split(' ');
-	for (int i = 0; i < bytes.len(); ++i) {
-	    b = bytes[i];
+	vector<string> bytes = split(signature, ' ');
+	for (int i = 0; i < bytes.size(); ++i) {
+	    string b = bytes[i];
 	    if (b == "??") {
 		charater_gaps.push_back(i);
 		wildcard.push_back(0);
