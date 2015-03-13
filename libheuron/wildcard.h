@@ -22,7 +22,6 @@ namespace heuron {
 	WILDCARD_TYPE type;
 	string wildcard;
 	vector<int> charater_gaps;
-	Wildcard _parse(string wildcard_string);
 	// Will be implemented later
 	int mismatch;
     public:

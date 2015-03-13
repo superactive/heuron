@@ -7,19 +7,13 @@
   -------------------------------------------------------------------------
 */
 
+#import "wildcard.h"
+
 using namespace std;
 
 namespace heuron {
 
     Wildcard::Wildcard(string wildcard_string) {
-	
-    }
-
-    Wildcard::Wildcard(WILDCARD_TYPE type, string wildcard, vector<int> charater_gaps) {
-
-    }
-
-    Wildcard Wildcard::_parse(string wildcard_string) {
 	WILDCARD_TYPE type;
 	vector<int> charater_gaps;
 	string wildcard("");
@@ -64,8 +58,15 @@ namespace heuron {
 		wildcard.push_back(current_char);
 	    }
 	}
-	result = new Wildcard(type, wildcard, charater_gaps);
-	return result;
+	this->type = type;
+	this->wildcard = wildcard;
+	this->charater_gaps = charater_gaps;
     }
-    
+
+    Wildcard::Wildcard(WILDCARD_TYPE type, string wildcard, vector<int> charater_gaps) {
+	this->type = type;
+	this->wildcard = wildcard;
+	this->charater_gaps = charater_gaps;
+    }
+
 }
