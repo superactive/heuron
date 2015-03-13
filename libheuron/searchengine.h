@@ -8,6 +8,7 @@
 */
 
 #include "dbhandler.h"
+#include "wildcard.h"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ namespace heuron {
       Search engine which implements primitive substring search
      */
     private:
+	DatabaseHandler db_handler;
     public:
 	int search_in_file(std::ifstream is);
 	int search_in_string(string target_string);

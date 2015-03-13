@@ -40,6 +40,7 @@ namespace heuron {
     class DatabaseHandler {
 	/*
 	  Heuristic database handler
+	  TODO: Make iterator
 	 */
     private:
 	std::map<int, HeuristicSignature> database;

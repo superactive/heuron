@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <map>
 #include"dbhandler.h"
 #include"routines.h"
 
@@ -78,9 +79,8 @@ namespace heuron {
 	iter++; // Skip ' '
 	iter++; // Skip '{'
 	string::iterator end_iter = signature.end() - 2; // Pre-last charater of string
-	string parameters_string = string::copy(signature,
-						iter - signature.begin(),
-						end_iter - iter);
+	string parameters_string("");
+	signature.copy(parameters_string, iter, end_iter - iter);
 	string wildcard("");
 	map<string, int> classified_threats();
 	vector<string> parameters = split(parameters_string, ';');
@@ -93,8 +93,8 @@ namespace heuron {
 		vector<string> types = split(parsed_parameters[i], ',');
 		for (int j = 0; j < types.size(); ++j) {
 		    vector<string> parsed_type = split(types[j], ':');
-		    classified_threats.insert(pair<string, int>(parsed_type[0],
-								stoi(parsed_type[1], nullptr, 10));
+		    int type_threat = std::stoi(parsed_type[1], nullptr, 10);
+		    classified_threats.insert(pair<string, int>(parsed_type[0], type_threat));
 		}
 	    }
 	}

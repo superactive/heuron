@@ -72,4 +72,8 @@ namespace heuron {
 	this->charater_gaps = charater_gaps;
     }
 
+    Wildcard::get_wildcard() {
+	return this->wildcard;
+    }
+
 }
