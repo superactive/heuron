@@ -79,8 +79,7 @@ namespace heuron {
 	iter++; // Skip ' '
 	iter++; // Skip '{'
 	string::iterator end_iter = signature.end() - 2; // Pre-last charater of string
-	string parameters_string("");
-	signature.copy(parameters_string, iter, end_iter - iter);
+	string parameters_string = signature.substr(iter - signature.begin(), end_iter - iter);
 	string wildcard("");
 	map<string, int> classified_threats();
 	vector<string> parameters = split(parameters_string, ';');

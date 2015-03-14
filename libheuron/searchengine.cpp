@@ -16,16 +16,17 @@ using namespace std;
 
 namespace heuron {
 
-    int MAX_LEN = 65536;
+    int MAX_LEN = 8192;
     
     int SimpleSearchEngine::search_in_file(std::ifstream is) {
-	string file_string = string("");
-	is.readsome(file_string, MAX_LEN);
+	char file_char_array[MAX_LEN];
+	is.readsome(file_char_array, MAX_LEN);
+	string file_string(file_char_array);
 	return search_in_string(file_string);
     }
 
     int SimpleSearchEngine::search_in_string(std::string target_string) {
-	iterator iter = this->db_handler.begin();
+	iterator iter = this->db_handler.begin(); // FIXME
 	for ( ;iter != this->db_handler.end(); ++iter) {
 	    if (match_wildcard(target_string, *iter) == 1) {
 		return 1;
@@ -36,7 +37,7 @@ namespace heuron {
 
     int SimpleSearchEngine::match_wildcard(string target_string, Wildcard wildcard) {
 	// TODO: add charater gaps support
-	string wildcard_string = wildcard.get_wildcard()
+	string wildcard_string = wildcard.get_wildcard();
 	string::iterator wildcard_iter = wildcard_string.begin();
 	int wildcard_size = wildcard_string.size(); 
 	int num_of_equal_chars = 0;
