@@ -101,4 +101,14 @@ namespace heuron {
 	return result;
     }
 
+    map<int, HeuristicSignature>::iterator DatabaseHandler::begin() {
+	map<int, HeuristicSignature>::iterator result = this->database.begin();
+	return result;
+    }
+
+    map<int, HeuristicSignature>::iterator DatabaseHandler::end() {
+	map<int, HeuristicSignature>::iterator result = this->database.end();
+	return result;
+    }
+
 }	

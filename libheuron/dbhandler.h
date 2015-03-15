@@ -48,5 +48,7 @@ namespace heuron {
 	void load_database(ifstream is);
 	HeuristicSignature read_signature(int id);
 	HeuristicSignature parse_signature(string signature);
+	map<int, HeuristicSignature>::iterator begin();
+	map<int, HeuristicSignature>::iterator end();
     };
 }
