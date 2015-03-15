@@ -49,20 +49,20 @@ namespace heuron {
         
     
     void DatabaseHandler::load_database(ifstream is) {
-	std::map<int, HeuristicSignature> temp_database();
+	map<int, HeuristicSignature> temp_database();
 	int id = 0;
 	if (is.is_open()) {
 	    while (is.good()) {
 		string signature_string("");
 		getline(is, signature_string);
 		HeuristicSignature signature = parse_signature(signature_string);
-		this->database.insert(std::pair<int, HeuristicSignature>(id, signature));
+		this->database.insert(pair<int, HeuristicSignature>(id, signature));
 	    }
 	}
     }
     
     HeuristicSignature DatabaseHandler::read_signature(int id) {
-	return this->database[id];
+	//return this->database[id];
     }
 
     HeuristicSignature DatabaseHandler::parse_signature(string signature) {
@@ -81,7 +81,7 @@ namespace heuron {
 	string::iterator end_iter = signature.end() - 2; // Pre-last charater of string
 	string parameters_string = signature.substr(iter - signature.begin(), end_iter - iter);
 	string wildcard("");
-	map<string, int> classified_threats();
+	map<string, int> parsed_threats;
 	vector<string> parameters = split(parameters_string, ';');
 	for (int i = 0; i < parameters.size(); ++i) {
 	    vector<string> parsed_parameters = split(parameters[i], '=');
@@ -92,12 +92,13 @@ namespace heuron {
 		vector<string> types = split(parsed_parameters[i], ',');
 		for (int j = 0; j < types.size(); ++j) {
 		    vector<string> parsed_type = split(types[j], ':');
-		    int type_threat = std::stoi(parsed_type[1], nullptr, 10);
-		    classified_threats.insert(pair<string, int>(parsed_type[0], type_threat));
+		    int type_threat = string_to_int(parsed_type[1]);
+		    parsed_threats.insert(pair<string, int>(parsed_type[0], type_threat));
 		}
 	    }
 	}
-	return HeuristicSignature(wildcard, classified_threats);
+	HeuristicSignature result(wildcard, parsed_threats);
+	return result;
     }
 
 }	

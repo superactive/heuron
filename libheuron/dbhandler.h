@@ -23,18 +23,18 @@ namespace heuron {
 	int id;
 	// TODO: Now it is string, later it will be something like:
 	// REGEXP signature;
-	std::string signature;
-	std::map<string, int> classified_threats;
+	string signature;
+	map<string, int> classified_threats;
     public:
-	HeuristicSignature(std::string signature,
-			   std::map<string, int> classified_threats);
+	HeuristicSignature(string signature,
+			   map<string, int> classified_threats);
 	int get_id();
 	void set_id(int id);
 	string get_signature();
 	void set_signature(std::string signature);
 	// Will be implemented later
-	void add_threat(std::string type, int threat);
-	void change_threat(std::string type, int new_threat);
+	void add_threat(string type, int threat);
+	void change_threat(string type, int new_threat);
     };
 
     class DatabaseHandler {
@@ -43,10 +43,10 @@ namespace heuron {
 	  TODO: Make iterator
 	 */
     private:
-	std::map<int, HeuristicSignature> database;
+	map<int, HeuristicSignature> database;
     public:
-	void load_database(std::ifstream is);
+	void load_database(ifstream is);
 	HeuristicSignature read_signature(int id);
-	HeuristicSignature parse_signature(std::string signature);
+	HeuristicSignature parse_signature(string signature);
     };
 }
