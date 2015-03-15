@@ -26,8 +26,9 @@ namespace heuron {
     }
 
     int SimpleSearchEngine::search_in_string(std::string target_string) {
-	iterator iter = this->db_handler.begin(); // FIXME
-	for ( ;iter != this->db_handler.end(); ++iter) {
+	map<int, HeuristicSignature>::iterator iter = this->db_handler.begin();
+	map<int, HeuristicSignature>::iterator iter_end = this->db_handler.end();
+	for ( ;iter != iter_end; ++iter) {
 	    if (match_wildcard(target_string, *iter) == 1) {
 		return 1;
 	    }

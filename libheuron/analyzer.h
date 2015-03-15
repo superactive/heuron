@@ -8,8 +8,6 @@
   -------------------------------------------------------------------------
 */
 
-#include "dbhandler.h"
-
 using namespace std;
 
 namespace heuron {
