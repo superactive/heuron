@@ -35,6 +35,7 @@ namespace heuron {
 	// Will be implemented later
 	void add_threat(string type, int threat);
 	void change_threat(string type, int new_threat);
+	int get_threat(string threat_type);
     };
 
     class DatabaseHandler {

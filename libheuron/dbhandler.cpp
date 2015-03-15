@@ -39,6 +39,11 @@ namespace heuron {
 	this->signature = signature;
     }
     
+    int HeuristicSignature::get_threat(string threat_type) {
+	// FIXME: Unsafe, check threat containment
+	return this->classified_threats[threat_type];
+    }
+    
     void HeuristicSignature::add_threat(string type, int threat) {
 	/* Will be implemented later */
     }
