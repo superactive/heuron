@@ -30,6 +30,7 @@ namespace heuron {
 	// Will be implemented later
 	int mismatch;
     public:
+	Wildcard(){};
 	Wildcard(string wildcard_string);
 	Wildcard(WILDCARD_TYPE type, string wildcard, vector<int> charater_gaps);
 	string get_wildcard();

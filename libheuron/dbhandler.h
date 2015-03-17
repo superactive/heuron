@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <map>
+#include "wildcard.h"
 
 using namespace std;
 
@@ -21,17 +22,15 @@ namespace heuron {
 	 */
     private:
 	int id;
-	// TODO: Now it is string, later it will be something like:
-	// REGEXP signature;
-	string signature;
+	Wildcard signature_wildcard;
 	map<string, int> classified_threats;
     public:
-	HeuristicSignature(string signature,
+	HeuristicSignature(Wildcard signature_wildcard,
 			   map<string, int> classified_threats);
 	int get_id();
 	void set_id(int id);
-	string get_signature();
-	void set_signature(std::string signature);
+	Wildcard get_signature();
+	void set_signature(Wildcard signature_wildcard);
 	// Will be implemented later
 	void add_threat(string type, int threat);
 	void change_threat(string type, int new_threat);
@@ -41,7 +40,6 @@ namespace heuron {
     class DatabaseHandler {
 	/*
 	  Heuristic database handler
-	  TODO: Make iterator
 	 */
     private:
 	map<int, HeuristicSignature> database;

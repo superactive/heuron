@@ -18,8 +18,9 @@ using namespace std;
     
 namespace heuron {
 
-    HeuristicSignature::HeuristicSignature(string signature,
+    HeuristicSignature::HeuristicSignature(Wildcard signature_wildcard,
 					   map<string, int> classified_threats) {
+	this->signature_wildcard = signature_wildcard;
 	this->classified_threats = classified_threats;
     }
 
@@ -31,12 +32,12 @@ namespace heuron {
 	this->id = id;
     }
     
-    string HeuristicSignature::get_signature() {
-	return this->signature;
+    Wildcard HeuristicSignature::get_signature() {
+	return this->signature_wildcard;
     }
     
-    void HeuristicSignature::set_signature(string signature) {
-	this->signature = signature;
+    void HeuristicSignature::set_signature(Wildcard signature_wildcard) {
+	this->signature_wildcard = signature_wildcard;
     }
     
     int HeuristicSignature::get_threat(string threat_type) {
@@ -85,13 +86,15 @@ namespace heuron {
 	iter++; // Skip '{'
 	string::iterator end_iter = signature.end() - 2; // Pre-last charater of string
 	string parameters_string = signature.substr(iter - signature.begin(), end_iter - iter);
-	string wildcard("");
+	string wildcard_string("");
 	map<string, int> parsed_threats;
+	Wildcard wildcard;
 	vector<string> parameters = split(parameters_string, ';');
 	for (int i = 0; i < parameters.size(); ++i) {
 	    vector<string> parsed_parameters = split(parameters[i], '=');
 	    if (parsed_parameters[0] == "wildcard") {
-		wildcard = parsed_parameters[1];
+		wildcard_string = parsed_parameters[1];
+		wildcard = new Wildcard(wildcard_string);
 	    }
 	    if (parsed_parameters[0] == "type") {
 		vector<string> types = split(parsed_parameters[i], ',');
