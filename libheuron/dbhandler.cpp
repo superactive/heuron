@@ -94,7 +94,7 @@ namespace heuron {
 	    vector<string> parsed_parameters = split(parameters[i], '=');
 	    if (parsed_parameters[0] == "wildcard") {
 		wildcard_string = parsed_parameters[1];
-		wildcard = new Wildcard(wildcard_string);
+		wildcard = Wildcard(wildcard_string);
 	    }
 	    if (parsed_parameters[0] == "type") {
 		vector<string> types = split(parsed_parameters[i], ',');

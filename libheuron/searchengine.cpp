@@ -29,7 +29,7 @@ namespace heuron {
 	map<int, HeuristicSignature>::iterator iter = this->db_handler.begin();
 	map<int, HeuristicSignature>::iterator iter_end = this->db_handler.end();
 	for ( ;iter != iter_end; ++iter) {
-	    if (match_wildcard(target_string, *iter) == 1) {
+	    if (match_wildcard(target_string, iter->second.get_signature()) == 1) {
 		return 1;
 	    }
 	}
